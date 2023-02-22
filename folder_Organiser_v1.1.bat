@@ -9,8 +9,8 @@ set sv=%errorlevel%
 if %sv%==1 (call :man_folder_creation)
 if %sv%==2 (call :auto_fol_create)
 if %sv%==3 (call :auto_fol_sort)
-if %sv%==3 (call :auto_folder_manager)
-if %sv%==4 (call :q)
+if %sv%==4 (call :auto_folder_manager)
+if %sv%==5 (call :q)
 
 set /a var=0
 
