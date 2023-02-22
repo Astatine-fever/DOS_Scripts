@@ -1,19 +1,20 @@
 @ECHO OFF
 echo [1] Manually add Folder
 echo [2] Automatically create folder based on extensions
-echo [3] Autosort Files
-echo [4] Exit
+echo [3] Autosort Files (Select only if you created folders)
+echo [4] Autocreate and sort files 
+echo [5] Exit
 choice /C:12345 /N 
 set sv=%errorlevel%
 if %sv%==1 (call :man_folder_creation)
 if %sv%==2 (call :auto_fol_create)
 if %sv%==3 (call :auto_fol_sort)
+if %sv%==3 (call :auto_folder_manager)
 if %sv%==4 (call :q)
 
 set /a var=0
 
-:auto_fol_create
-
+:auto_folder_create
     REM DESKTOP Files
     if exist *.lnk md shortcuts
     if exist *.exe md executables
@@ -82,14 +83,12 @@ set /a var=0
     if exist *.cdr md adobe\Coreldraw
     if exist *.imd md adobe\Photoshop
     if exist *.pm* md adobe\Pagemaker
-    pause
-    exit
 
-:auto_fol_sort
 
-    echo Make sure you created folders or run step 2 before proceeding
-    pause
 
+
+
+:auto_folder_sort
     REM DESKTOP Files
 
     if exist *.lnk move *.lnk shortcuts
@@ -204,7 +203,21 @@ set /a var=0
 
     if exist *.bat md documents\script
     if exist *.bat move *.bat documents\script
+:auto_folder_manager
+    call :auto_fol_create
+    call :auto_fol_sort
+    exit
+
+:auto_fol_create
+    call :auto_folder_create
     pause
+    exit
+
+:auto_fol_sort
+
+    echo Make sure you created folders or run step 2 before proceeding
+    pause
+    call :auto_fol_sort
     exit
 
 :man_folder_creation
