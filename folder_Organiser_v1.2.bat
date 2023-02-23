@@ -42,7 +42,7 @@ REM Folder Creating Subfunction Function
     
     REM DESKTOP Files
     if exist *.lnk md shortcuts
-    if exist *.exe md executables
+    if exist *.exe md execu
     if exist *.rar md compressedfiles\rar
     if exist *.zip md compressedfiles\zip
     if exist *.7z md compressedfiles\7z
