@@ -1,9 +1,10 @@
 @ECHO OFF
-echo [1] Manually add Folder
-echo [2] Automatically create folder based on extensions
-echo [3] Autosort Files (Select only if you created folders)
-echo [4] Autocreate and sort files 
-echo [5] Exit
+echo                    [1] Manually add Folder
+echo                    [2] Automatically create folder based on extensions
+echo                    [3] Autosort Files (Select only if you created folders)
+echo                    [4] Autocreate and sort files 
+color 4
+echo                    [5] Exit
 choice /C:12345 /N 
 set sv=%errorlevel%
 if %sv%==1 (call :man_folder_creation)
@@ -209,12 +210,13 @@ set /a var=0
     exit
 
 :auto_fol_create
+    color 2
     call :auto_folder_create
     pause
     exit
 
 :auto_fol_sort
-
+    color 4
     echo Make sure you created folders or run step 2 before proceeding
     pause
     call :auto_fol_sort
