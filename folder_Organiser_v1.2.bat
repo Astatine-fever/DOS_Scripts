@@ -1,10 +1,33 @@
 @ECHO OFF
-color 4
+title folder optimisation script by Astatine
+color 2
+echo $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'               `$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+echo $$$$$$$$$$$$$$$$$$$$$$$$$$$$'                   `$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+echo $$$'`$$$$$$$$$$$$$'`$$$$$$!                       !$$$$$$'`$$$$$$$$$$$$$'`$$$
+echo $$$$  $$$$$$$$$$$  $$$$$$$                         $$$$$$$  $$$$$$$$$$$  $$$$
+echo $$$$. `$' \' \$`  $$$$$$$!                         !$$$$$$$  '$/ `/ `$' .$$$$
+echo $$$$$. !\  i  i .$$$$$$$$                           $$$$$$$$. i  i  /! .$$$$$
+echo $$$$$$   `--`--.$$$$$$$$$                           $$$$$$$$$.--'--'   $$$$$$
+echo $$$$$$L        `$$$$$^^$$$                            $$^^$$$$$'        J$$$$$$
+echo $$$$$$$.   .'   ""~   $$$    $.                 .$  $$$   ~""   `.   .$$$$$$$
+echo $$$$$$$$.  ;      .e$$$$$!    $$.             .$$  !$$$$$e,      ;  .$$$$$$$$
+echo $$$$$$$$$   `.$$$$$$$$$$$$     $$$.         .$$$   $$$$$$$$$$$$.'   $$$$$$$$$
+echo $$$$$$$$    .$$$$$$$$$$$$$!     $$`$$$$$$$$'$$    !$$$$$$$$$$$$$.    $$$$$$$$
+echo $$$$$$$     $$$$$$$$$$$$$$$$.    $    $$    $   .$$$$$$$$$$$$$$$$     $$$$$$$
+echo                                  $    $$    $
+echo                                  $.   $$   .$
+echo                                  `$        $'
+echo                                   `$$$$$$$$'
+
+echo ===============================================================================
+
 echo                    [1] Manually add Folder
 echo                    [2] Automatically create folder based on extensions
 echo                    [3] Autosort Files (Select only if you created folders)
 echo                    [4] Autocreate and sort files 
 echo                    [5] Exit
+
+echo ===============================================================================
 choice /C:12345 /N 
 set sv=%errorlevel%
 if %sv%==1 (call :man_folder_creation)
@@ -14,8 +37,9 @@ if %sv%==4 (call :auto_folder_manager)
 if %sv%==5 (call :q)
 
 set /a var=0
-
+REM Folder Creating Subfunction Function
 :auto_folder_create
+    
     REM DESKTOP Files
     if exist *.lnk md shortcuts
     if exist *.exe md executables
@@ -63,7 +87,6 @@ set /a var=0
     REM Web development
 
     if exist *.html md "Web Development"
-    if exist *.css move *.css "Web Development"
     if exist *.js md "Web Development"
     if exist *.php md "Web Development"
 
@@ -89,9 +112,12 @@ set /a var=0
 
 
 
+REM Folder Organising SubFunction
 :auto_folder_sort
+    title Organise Files based on extensions 
+    color 3
+    cls
     REM DESKTOP Files
-
     if exist *.lnk move *.lnk shortcuts
     if exist *.exe move *.exe executables
     if exist *.rar move *.rar compressedfiles\rar
@@ -204,39 +230,55 @@ set /a var=0
 
     if exist *.bat md documents\script
     if exist *.bat move *.bat documents\script
+    
+REM Folder Manager Function
 :auto_folder_manager
     call :auto_fol_create
     call :auto_fol_sort
     exit
-
+REM Folder Creating Functions
 :auto_fol_create
-    color 2
+    title Create Folder based on extensions 
+    color 3
+    cls
+    echo creating folders....
     call :auto_folder_create
-    pause
+    timeout /t 5 /nobreak
     exit
 
+REM Folder Creating Functions
 :auto_fol_sort
     color 4
+    title Organise Files based on extensions 
+    cls
     echo Make sure you created folders or run step 2 before proceeding
     pause
-    call :auto_fol_sort
+    echo sorting files....
+    call :auto_folder_sort
+    echo files sorted ....
     exit
 
+REM Manual Folder Creation Functions
 :man_folder_creation
-
-    SET /P UserInput=Please Enter a Number of folders to be created:
+    title Folder Creation tool
+    cls
+    color 6
+    SET /P UserInput=Please Enter Number of folders to be created : 
     IF %UserInput% EQU 0 GOTO E_INVALIDINPUT
 
     SET /A UserInputVal="%UserInput%"*1
     IF %UserInputVal% GTR 0 ECHO "%UserInputVal%" Folders to be created 
-    IF %UserInputVal% EQU 0 ECHO UserInput "%UserInputVal%" is not a number
-    GOTO EOF
+    IF %UserInputVal% EQU 0 GOTO EOF
 
+REM Exit point functions
 :E_INVALIDINPUT
     ECHO Invalid user input
  
 :EOF
-    pause
+    color 4
+    echo Given value is not a number.... program is exitting 
+    timeout /t 5 /nobreak
+    exit
 
 md folder0
 set /a var=0
