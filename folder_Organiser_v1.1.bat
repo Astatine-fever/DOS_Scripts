@@ -1,9 +1,9 @@
 @ECHO OFF
+color 4
 echo                    [1] Manually add Folder
 echo                    [2] Automatically create folder based on extensions
 echo                    [3] Autosort Files (Select only if you created folders)
 echo                    [4] Autocreate and sort files 
-color 4
 echo                    [5] Exit
 choice /C:12345 /N 
 set sv=%errorlevel%
