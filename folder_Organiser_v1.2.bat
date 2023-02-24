@@ -177,29 +177,7 @@ REM Folder Organising SubFunction
     if exist *.php move *.php "Web Development"
 
     REM Media file
-
-    if exist *.jpg md Media\Pictures\Jpeg
-    if exist *.png md Media\Pictures\png
-    if exist *.img md  Media\Pictures\img
-    if exist *.jpeg md Media\Pictures\Jpeg
-    if exist *.gif md Media\Pictures\gif
-    if exist *.tif md Media\Pictures\tif
-    if exist *.bmp md Media\Pictures\bmp
-
-    if exist *.mp3 md Media\Audio\mp3_files
-    if exist *.ogg md Media\Audio\ogg_files
-    if exist *.m4a md Media\Audio\m4a_files
-    if exist *.wma md Media\Audio\wma_files
-
-
-    if exist *.mp4 md Media\Video\mp4_files
-    if exist *.flv md Media\Video\flv_files
-    if exist *.avi md Media\Video\avi_files
-    if exist *.mkv md Media\Video\mkv_files
-    if exist *.mov md Media\Video\mov_files
-    if exist *.webm md Media\Video\webm_files
-
-
+  
     if exist *.jpg move *.jpg Media\Pictures\Jpeg
     if exist *.png move *.png Media\Pictures\png
     if exist *.img move *.img Media\Pictures\img
