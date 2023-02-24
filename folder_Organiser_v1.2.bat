@@ -42,7 +42,7 @@ REM Folder Creating Subfunction Function
     
     REM DESKTOP Files
     if exist *.lnk md shortcuts
-    if exist *.exe md execu
+    if exist *.exe md program
     if exist *.rar md compressedfiles\rar
     if exist *.zip md compressedfiles\zip
     if exist *.7z md compressedfiles\7z
@@ -89,6 +89,8 @@ REM Folder Creating Subfunction Function
     if exist *.html md "Web Development"
     if exist *.js md "Web Development"
     if exist *.php md "Web Development"
+    if exist *.css md "Web Development"
+
 
     REM Media file
 
@@ -99,7 +101,18 @@ REM Folder Creating Subfunction Function
     if exist *.gif md Media\Pictures\gif
     if exist *.tif md Media\Pictures\tif
     if exist *.bmp md Media\Pictures\bmp
+    
+    if exist *.mp3 md Media\Audio\mp3_files
+    if exist *.ogg md Media\Audio\ogg_files
+    if exist *.m4a md Media\Audio\m4a_files
+    if exist *.wma md Media\Audio\wma_files
 
+    if exist *.mp4 md Media\Video\mp4_files
+    if exist *.flv md Media\Video\flv_files
+    if exist *.avi md Media\Video\avi_files
+    if exist *.mkv md Media\Video\mkv_files
+    if exist *.mov md Media\Video\mov_files
+    if exist *.webm md Media\Video\webm_files
 
     REM Adobe Files
 
@@ -107,10 +120,6 @@ REM Folder Creating Subfunction Function
     if exist *.cdr md adobe\Coreldraw
     if exist *.imd md adobe\Photoshop
     if exist *.pm* md adobe\Pagemaker
-
-
-
-
 
 REM Folder Organising SubFunction
 :auto_folder_sort
@@ -165,40 +174,12 @@ REM Folder Organising SubFunction
 
     REM Web development
 
-    if exist *.html md "Web Development"
-    if exist *.js md "Web Development"
-    if exist *.php md "Web Development"
-    if exist *.css md "Web Development"
-
-
     if exist *.css move *.css "Web Development"
     if exist *.html move *.html "Web Development"
     if exist *.js move *.js "Web Development"
     if exist *.php move *.php "Web Development"
 
     REM Media file
-
-    if exist *.jpg md Media\Pictures\Jpeg
-    if exist *.png md Media\Pictures\png
-    if exist *.img md  Media\Pictures\img
-    if exist *.jpeg md Media\Pictures\Jpeg
-    if exist *.gif md Media\Pictures\gif
-    if exist *.tif md Media\Pictures\tif
-    if exist *.bmp md Media\Pictures\bmp
-
-    if exist *.mp3 md Media\Audio\mp3_files
-    if exist *.ogg md Media\Audio\ogg_files
-    if exist *.m4a md Media\Audio\m4a_files
-    if exist *.wma md Media\Audio\wma_files
-
-
-    if exist *.mp4 md Media\Video\mp4_files
-    if exist *.flv md Media\Video\flv_files
-    if exist *.avi md Media\Video\avi_files
-    if exist *.mkv md Media\Video\mkv_files
-    if exist *.mov md Media\Video\mov_files
-    if exist *.webm md Media\Video\webm_files
-
 
     if exist *.jpg move *.jpg Media\Pictures\Jpeg
     if exist *.png move *.png Media\Pictures\png
